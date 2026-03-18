@@ -25,11 +25,20 @@ jobs:
         python-version:  ${{ matrix.python-version }}
 
 
-    - name: Test some Python scripts
+    - name: Test FissionYeastPhenotyping
       run: |
-        echo "Running tests..."
+        echo "Running FissionYeastPhenotyping tests..."
         
         cd FissionYeastPhenotyping
+        pip install -r requirements.txt
+        python ideas.py
+
+
+    - name: Test BiasedConnectivityVentralSubiculum
+      run: |
+        echo "Running BiasedConnectivityVentralSubiculum tests..."
+        
+        cd BiasedConnectivityVentralSubiculum
         pip install -r requirements.txt
         python ideas.py
 
