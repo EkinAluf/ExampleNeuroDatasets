@@ -8,10 +8,10 @@ import sys
 
 # Open file
 filepath = "Chemotaxis-Data-and-Analysis/Mock_worms/chemotaxis_mock_25825_1_20250725_153953/metadata_featuresN_oneworm.hdf5"
-if '-a' in sys.argv:
+if "-a" in sys.argv:
     filepath = "Chemotaxis-Data-and-Analysis/Aversive_worms/chemotaxis_avsv_24_1_23_03_20240124_142324/metadata_featuresN_oneworm.hdf5"
-if '-s' in sys.argv:
-    filepath = 'Chemotaxis-Data-and-Analysis/sexually_conditioned_worms/chemotaxis_sexc_24_1_26_13_20240126_152252/metadata_featuresN_oneworm.hdf5'
+elif "-s" in sys.argv:
+    filepath = "Chemotaxis-Data-and-Analysis/sexually_conditioned_worms/chemotaxis_sexc_24_1_26_13_20240126_152252/metadata_featuresN_oneworm.hdf5"
 
 
 # Check that file exists
@@ -20,7 +20,7 @@ if not os.path.exists(filepath):
         f"\nFile not found: {filepath}!\nPlease clone the repository into this folder using:\n"
     )
     print(
-        "    git clone -b Worm-Locomotion https://github.com/Barrios-Lab/Chemotaxis-Data-and-Analysis.git\n"
+        "    git clone https://github.com/Barrios-Lab/Chemotaxis-Data-and-Analysis.git\n"
     )
     quit()
 
@@ -42,6 +42,12 @@ with h5py.File(filepath, "r") as f:
     base_coordinates = f["base_coordinates"][:]
     print(f"Base coordinates: {base_coordinates}")
 
+    neck_x = f["neck_x"][:]
+    neck_y = f["neck_y"][:]
+    print(
+        f"Neck coordinates: ({neck_x[0]}, {neck_y[0]}, ..., {neck_x[-1]}, {neck_y[-1]})"
+    )
+
     # Load odor patch coordinates
     if "food_cnt_coord" in f:
         odor_patch = f["food_cnt_coord"][:]
@@ -59,9 +65,22 @@ plt.figure(figsize=(6, 6))
 
 plt.plot(odor_patch[:, 0], odor_patch[:, 1], "r-", label="Odor Patch Boundary")
 
+scale = 13
 
 plt.scatter(
-    traj_data["coord_x"], traj_data["coord_y"], s=1, c="blue", label="Worm Trajectory"
+    [i * scale for i in traj_data["coord_x"]],
+    [i * scale for i in traj_data["coord_y"]],
+    s=1,
+    c="blue",
+    label="Worm centroid trajectory",
+)
+
+plt.scatter(
+    neck_x,
+    neck_y,
+    s=3,
+    c="black",
+    label="Worm neck trajectory",
 )
 
 plt.scatter(
@@ -69,7 +88,7 @@ plt.scatter(
     base_coordinates[:, 1],
     s=1,
     c="green",
-    label="Worm base Trajectory",
+    label="Base coordinates",
 )
 
 plt.xlabel("X Coordinate")

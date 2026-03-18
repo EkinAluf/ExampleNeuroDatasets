@@ -22,9 +22,9 @@ Data here is more recently acquired, but a previous study using this type of dat
 
 ## Link(s) to dataset/supplementary information  
 
-Read the README.md here to understand the datasets. Note: files are in **Worm-Locomotion** branch not **main** (yet...).
+Read the README.md here to understand the datasets.
 
-https://github.com/Barrios-Lab/Chemotaxis-Data-and-Analysis/tree/Worm-Locomotion
+https://github.com/Barrios-Lab/Chemotaxis-Data-and-Analysis
 
 ## Suggestions for easy tasks/low-hanging fruit   
 
