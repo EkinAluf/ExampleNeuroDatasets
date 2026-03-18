@@ -18,6 +18,8 @@ Data here is more recently acquired, but a previous study using this type of dat
 
 [Molina-García et al. **Conflict during learning reconfigures the neural representation of positive valence and approach behavior**, Current Biology, Volume 34, Issue 23, 2024](https://www.sciencedirect.com/science/article/pii/S0960982224013782)
 
+<img src="images/1-s2.0-S0960982224013782-fx1_lrg.jpg" width="400"/>
+
 ## Link(s) to dataset/supplementary information  
 
 Read the README.md here to understand the datasets. Note: files are in **Worm-Locomotion** branch not **main** (yet...).
@@ -26,7 +28,9 @@ https://github.com/Barrios-Lab/Chemotaxis-Data-and-Analysis/tree/Worm-Locomotion
 
 ## Suggestions for easy tasks/low-hanging fruit   
 
-...
+Load in dataset in Jupyter notebook, create plot of trajectory as in paper above (e.g. Figure 4A)
+
+<img src="images/Chemotaxis.png" width="400"/>
 
 ## Suggestions for more involved tasks/further analyses 
 
